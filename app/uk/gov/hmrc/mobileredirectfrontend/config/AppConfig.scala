@@ -24,5 +24,6 @@ class AppConfig @Inject() (config: Configuration) {
 
   val welshLanguageSupportEnabled: Boolean =
     config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
-  val appDeeplinkUrl: String = config.get[String]("appDeeplinkUrl")
+  val iosAppDeeplinkUrl:     String = config.get[String]("iosAppDeeplinkUrl")
+  val androidAppDeeplinkUrl: String = config.get[String]("androidAppDeeplinkUrl")
 }

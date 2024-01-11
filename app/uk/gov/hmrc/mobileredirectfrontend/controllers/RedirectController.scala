@@ -30,13 +30,11 @@ class RedirectController @Inject() (
   configuration:            AppConfig)
     extends FrontendBaseController {
 
-  private val appDeepLinkUrl: String = configuration.appDeeplinkUrl
-
   def iosRedirect(url: String): Action[AnyContent] = Action.async { implicit request =>
     val fullUrl = s"$url?${request.rawQueryString}"
     Future.successful(
       Redirect(
-        appDeepLinkUrl,
+        configuration.iosAppDeeplinkUrl,
         Map(
           "url" -> collection.immutable.Seq(URLEncoder.encode(fullUrl, "UTF-8"))
         )
@@ -48,7 +46,7 @@ class RedirectController @Inject() (
     val fullUrl = s"$url?${request.rawQueryString}"
     Future.successful(
       Redirect(
-        appDeepLinkUrl,
+        configuration.androidAppDeeplinkUrl,
         Map(
           "url" -> collection.immutable.Seq(URLEncoder.encode(fullUrl, "UTF-8"))
         )
