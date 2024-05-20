@@ -21,5 +21,5 @@ lazy val microservice = Project("mobile-redirect-frontend", file("."))
 lazy val it = project
   .enablePlugins(PlayScala)
   .dependsOn(microservice % "test->test")
-  .settings(DefaultBuildSettings.itSettings)
+  .settings(Defaults.itSettings)
   .settings(libraryDependencies ++= AppDependencies.it)
