@@ -27,7 +27,6 @@ import play.api.mvc.Result
 import play.api.test.FakeRequest
 
 import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
 
 class RedirectControllerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuite {
 
