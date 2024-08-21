@@ -54,4 +54,12 @@ class RedirectController @Inject() (
     )
   }
 
+  def ivRedirect(result: String): Action[AnyContent] = Action.async {
+    Future.successful(
+      Redirect(
+        s"${configuration.genericAppDeeplink}$result"
+      )
+    )
+  }
+
 }
