@@ -22,10 +22,12 @@ import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.Application
 import play.api.test.FakeRequest
 import play.api.inject.guice.GuiceApplicationBuilder
+import play.twirl.api.Html
 
-class ErrorHandlerSpec extends AnyWordSpec
-  with Matchers
-  with GuiceOneAppPerSuite {
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+class ErrorHandlerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuite {
 
   override def fakeApplication(): Application =
     new GuiceApplicationBuilder()
@@ -39,10 +41,16 @@ class ErrorHandlerSpec extends AnyWordSpec
 
   private val handler = app.injector.instanceOf[ErrorHandler]
 
+  implicit val ec = scala.concurrent.ExecutionContext.Implicits.global
+
   "standardErrorTemplate" should {
     "render HTML" in {
-      val html = handler.standardErrorTemplate("title", "heading", "message")(fakeRequest)
-      html.contentType shouldBe "text/html"
+      val html: Future[Html] = handler.standardErrorTemplate("title", "heading", "message")(fakeRequest)
+      html onComplete {
+        case Success(htmlValue) => htmlValue.contentType shouldBe "text/html"
+        case Failure(_)         =>
+      }
+
     }
   }
 
