@@ -1,6 +1,11 @@
 # mobile-redirect-frontend
 =============================================
 
+## Run Tests
+- Run Unit Tests:  `sbt test`
+-
+
+
 Pages
 ---
 
