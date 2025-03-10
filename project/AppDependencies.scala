@@ -2,8 +2,8 @@ import sbt._
 
 object AppDependencies {
 
-  private val bootstrapVersion    = "9.5.0"
-  private val playFrontendVersion = "11.3.0"
+  private val bootstrapVersion    = "9.11.0"
+  private val playFrontendVersion = "11.12.0"
   private val jsoupVersion        = "1.15.4"
 
   val compile = Seq(
