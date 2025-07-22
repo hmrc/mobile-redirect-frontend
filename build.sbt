@@ -2,8 +2,7 @@ import play.sbt.PlayImport.PlayKeys.playDefaultPort
 import uk.gov.hmrc.DefaultBuildSettings
 
 ThisBuild / majorVersion := 0
-ThisBuild / scalaVersion := "3.3.5"
-ThisBuild /crossScalaVersions ++= Seq("2.13.16", "3.3.5")
+ThisBuild / scalaVersion := "3.6.4"
 
 lazy val microservice = Project("mobile-redirect-frontend", file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin)
