@@ -24,7 +24,7 @@ import play.api.test.FakeRequest
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.twirl.api.Html
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
 class ErrorHandlerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuite {
@@ -41,7 +41,7 @@ class ErrorHandlerSpec extends AnyWordSpec with Matchers with GuiceOneAppPerSuit
 
   private val handler = app.injector.instanceOf[ErrorHandler]
 
-  implicit val ec = scala.concurrent.ExecutionContext.Implicits.global
+  implicit val ec: scala.concurrent.ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   "standardErrorTemplate" should {
     "render HTML" in {

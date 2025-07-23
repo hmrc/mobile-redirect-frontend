@@ -3,7 +3,9 @@
 
 ## Run Tests
 - Run Unit Tests:  `sbt test`
--
+- Run it Test: `sbt it/test`
+- Run unit and Integration Tests: `sbt test it/test`
+- Run Unit and Integration Tests with coverage report: `sbt clean compile coverage test it/test coverageReport dependencyUpdates`
 
 
 Pages

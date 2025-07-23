@@ -2,7 +2,7 @@ import play.sbt.PlayImport.PlayKeys.playDefaultPort
 import uk.gov.hmrc.DefaultBuildSettings
 
 ThisBuild / majorVersion := 0
-ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / scalaVersion := "3.6.4"
 
 lazy val microservice = Project("mobile-redirect-frontend", file("."))
   .enablePlugins(play.sbt.PlayScala, SbtDistributablesPlugin)
@@ -15,7 +15,6 @@ lazy val microservice = Project("mobile-redirect-frontend", file("."))
     pipelineStages := Seq(gzip),
     playDefaultPort := 8266
   )
-  .settings(resolvers += Resolver.jcenterRepo)
   .settings(CodeCoverageSettings.settings: _*)
 
 lazy val it = project
